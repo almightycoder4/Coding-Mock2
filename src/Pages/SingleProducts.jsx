@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../Redux/AppReducer/action";
-import { Navigate } from "react-router-dom";
+//import { Navigate } from "react-router-dom";
 
 const SingleProduct = () => {
   const { id } = useParams();

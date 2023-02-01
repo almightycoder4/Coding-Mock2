@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProductCard from "../Components/ProductCard";
 import { getProduct } from "../Redux/AppReducer/action";
 
@@ -9,16 +9,11 @@ const Products = () => {
   const getProducts = useSelector((state) => state.AppReducer.product);
   console.log(getProducts);
   const location = useLocation();
-  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     let getProductParams;
-    if (location.search || getProducts.length === 0) {
-      getProductParams = {
-        params: {
-          category: searchParams.getAll("category"),
-        },
-      };
+    if (location.search) {
+      getProductParams = {};
     }
     dispatch(getProduct(getProductParams));
   }, [location.search, dispatch]);
